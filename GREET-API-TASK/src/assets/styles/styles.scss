@@ -1,0 +1,92 @@
+@import 'scss-reset/reset';
+
+// VARIABLES
+$base-color-light: #42b883;
+$base-color-dark: #213547;
+
+// HELPERS
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+strong {
+    font-weight: bolder;
+}
+
+// GENERAL STYLES
+body {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: $base-color-dark;
+    background: $base-color-dark;
+
+    @media screen and (min-width: 1224px) and (max-width: 1623px) {
+        font-size: 13px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: $base-color-light;
+        font-weight: 900;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        font-weight: bolder;
+    }
+
+    p {
+        line-height: 1.5;
+        text-align: justify;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+// ANIMATIONS
+@keyframes shake {
+    0% { transform: translate(0px, 0px) rotate(0deg);}
+    20% { transform: translate(3px, 0px) rotate(10deg); }
+    40% { transform: translate(-3px, 0px) rotate(-10deg);}
+    60%  { transform: translate(3px, 0px) rotate(10deg); }
+    80% { transform: translate(-3px, 0px) rotate(-10deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+@keyframes puls {
+    0% { transform: scale(1);}
+    20% { transform: scale(1.1);}
+    40% { transform: scale(1);}
+    60%  { transform: scale(1.1);}
+    100% { transform: scale(1);}
+}

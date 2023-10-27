@@ -1,0 +1,23 @@
+{
+  "name": "greet-api-task",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@types/sass": "^1.45.0",
+    "@types/sass-loader": "^8.0.7",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "sass": "^1.69.4",
+    "sass-loader": "^13.3.2",
+    "scss-reset": "^1.4.2",
+    "vite": "^4.4.5"
+  }
+}
