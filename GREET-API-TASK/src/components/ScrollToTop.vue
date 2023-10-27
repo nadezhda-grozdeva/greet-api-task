@@ -49,7 +49,8 @@ onMounted(() => {
     }
 
     &:hover:after {
-        animation: puls .5s;
+        animation: puls-top .5s;
+        animation-iteration-count: 2;
     }
 }
 
