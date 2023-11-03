@@ -2,29 +2,20 @@
     <div class="top-container flex">
         <h1>greet api task</h1>
         <div class="greet-cards-filters flex">
-            <select v-model="filterByCategory" id="filterByCategory" name="filterByCategory" @change="filterData" aria-label="Изберете категория">
-                <option disabled value="null">Изберете категория</option>
-                <option value="">Покажи всички</option>
-                <option
-                    v-for="category in categoriesList" 
-                    :key="category"
-                    :value="category"
-                    :selected="category"
-                    >
-                    {{ category }}
-                </option>
-            </select>
-            <select v-model="sortBy" id="sortBy" name="sortBy" @change="filterData" aria-label="Сортирай">
-                <option disabled value="null">Сортирай</option>
-                <option 
-                    v-for="item in sortByList" 
-                    :key="item.value" 
-                    :value="item.value"
-                    :selected="item.value"
-                    >
-                    {{ item.name }}
-                </option>
-            </select>
+            <base-select 
+                v-model="filterByCategory" 
+                :data="filterByCategory"
+                :dataList="categoriesList"
+                ariaLabel="Изберете категория"
+                showAll="true"
+            ></base-select>
+
+            <base-select 
+                v-model="sortBy"
+                :data="sortBy"
+                :dataList="sortByList"
+                ariaLabel="Сортирай"
+            ></base-select>
         </div>
     </div>
 
@@ -40,7 +31,8 @@
 import { ref, reactive, onMounted, computed } from 'vue';
 
 // COMPONENTS
-import GreetCard from './GreetCard.vue';
+import GreetCard from './Greetcard.vue';
+import BaseSelect from './UI/BaseSelect.vue';
 import InfiniteScroller from "./InfiniteScroller.vue";
 import Loading from "./Loading.vue";
 
@@ -51,16 +43,7 @@ let greetListPage = ref(1),
     categoriesList = reactive([]),
     filterByCategory = ref(null),
     sortBy = ref(null),
-    sortByList = reactive([
-        {
-            'name': 'Име',
-            'value': 'name'
-        }, 
-        {
-            'name': 'Цена',
-            'value': 'price'
-        }
-    ]),
+    sortByList = reactive(['Име', 'Цена']),
     loading = ref(false),
     firstLoad = ref(true);
 
@@ -76,17 +59,20 @@ const filteredData = computed(function() {
         }
     }
 
-    switch(sortBy.value) {
-        case 'name':
+    if(sortBy.value != null) {
+        switch(sortBy.value.toLowerCase()) {
+        case 'име':
             result = result.sort(sortDataByName)
             break;
-        case 'price':
+        case 'цена':
             result = result.sort(sortDataByPrice)
             break;
         default:
             // code block
+        }
     }
     return result
+
 })
 
 function sortDataByName(item, nextItem) {

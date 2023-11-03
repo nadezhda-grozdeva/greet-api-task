@@ -52,13 +52,11 @@ import { parseTextToHtml } from '../filters/parseHtmlToText';
 // COMPONENTS
 import BaseButton from './UI/BaseButton.vue';
 
-const maxLength = 400,
-      baseUrl = 'https://greet.bg/?add-to-cart=5589';
+const baseUrl = 'https://greet.bg/?add-to-cart=5589';
       // IF DYNAMIC URL
       // baseUrl = 'https://greet.bg/?add-to-cart=';
 
-let showFullDescr = ref(false),
-    showBackCard = ref(false);
+let showBackCard = ref(false);
 
 const props = defineProps([
   'greetItem'
