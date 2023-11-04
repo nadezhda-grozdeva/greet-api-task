@@ -4,10 +4,9 @@
         <div class="greet-cards-filters flex">
             <base-select 
                 v-model="filterByCategory" 
-                :data="filterByCategory"
                 :dataList="categoriesList"
                 ariaLabel="Изберете категория"
-                showAll="true"
+                :showAll='true'
             ></base-select>
 
             <base-select 

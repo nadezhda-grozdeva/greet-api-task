@@ -1,6 +1,6 @@
 <template>
-   <select v-model="selectedValue" name="data" id="data" aria-label="ariaLabel">
-        <option disabled value="null">{{ ariaLabel }}</option>
+   <select :value="modelValue" @change="emit('update:modelValue', $event.target.value)" :name="ariaLabel" :id="ariaLabel" :aria-label="ariaLabel">
+        <option disabled value="">{{ ariaLabel }}</option>
         <option v-if="showAll" value="">Покажи всички</option>
         <option
             v-for="item in dataList"
@@ -14,15 +14,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const props = defineProps([
-    'data', 
-    'dataList',
-    'ariaLabel', 
-    'showAll'
-]);
-
-let selectedValue = ref(null);
-
+const emit = defineEmits(['update:modelValue'])
+const props = defineProps({
+    dataList: Object,
+    ariaLabel: String, 
+    showAll: {
+        type: Boolean,
+        default: false
+    },
+    modelValue: {
+        type: String
+    }
+});
 </script>
