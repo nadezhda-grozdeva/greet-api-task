@@ -15,15 +15,21 @@
 
 <script setup>
 const emit = defineEmits(['update:modelValue'])
-const props = defineProps({
-    dataList: Object,
-    ariaLabel: String, 
-    showAll: {
-        type: Boolean,
-        default: false
-    },
-    modelValue: {
-        type: String
-    }
-});
+// const props = defineProps({
+//     dataList: Object,
+//     ariaLabel: String, 
+//     showAll: {
+//         type: Boolean,
+//         default: false
+//     },
+//     modelValue: {
+//         type: String
+//     }
+// });
+const props = defineProps([
+    'dataList',
+    'ariaLabel',
+    'showAll',
+    'modelValue'
+]);
 </script>
